@@ -17,11 +17,13 @@ public class City {
     @GeneratedValue
     private Long id;
     private String name;
+    private String country;
 
     public City() {
     }
 
-    public City(String name) {
+    public City(String name, String country) {
         this.name = name;
+        this.country = country;
     }
 }
