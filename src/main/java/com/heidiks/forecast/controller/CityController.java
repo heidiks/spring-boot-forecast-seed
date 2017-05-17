@@ -3,10 +3,7 @@ package com.heidiks.forecast.controller;
 import com.heidiks.forecast.model.City;
 import com.heidiks.forecast.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,11 @@ public class CityController {
     @RequestMapping(method = RequestMethod.POST)
     public City addItem(@RequestBody City city) {
         return repo.saveAndFlush(city);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public City updateItem(@RequestBody City updatedCity, @PathVariable Integer id) {
+        return repo.saveAndFlush(updatedCity);
     }
 
 }

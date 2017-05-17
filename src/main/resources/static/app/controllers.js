@@ -1,21 +1,25 @@
 (function(angular) {
   var AppController = function($scope, City) {
-      City.query(function(response) {
-      $scope.cities = response ? response : [];
-    });
-    
-    $scope.add = function(newCity) {
-      new City({
-        name: newCity.name,
-        country: newCity.country
-      }).$save(function(city) {
-        $scope.cities.push(city);
+
+    get = function() {
+        City.query(response => $scope.cities = response ? response : []);
+    };
+
+    $scope.saveOrUpdate = function(newCity) {
+      var city = new City({
+          id: newCity.id,
+          name: newCity.name,
+          country: newCity.country
       });
+
+      if(!newCity) city.$save(get);
+      else city.$update(get);
+
       $scope.newCity = "";
     };
-    
-    $scope.update = function(city) {
-        city.$update();
+
+    $scope.edit = function(city) {
+        $scope.newCity = angular.copy(city);
     };
     
     $scope.delete = function(city) {
@@ -23,6 +27,8 @@
         $scope.cities.splice($scope.cities.indexOf(city), 1);
       });
     };
+
+    get();
   };
   
   AppController.$inject = ['$scope', 'City'];
