@@ -2,6 +2,7 @@ package com.heidiks.forecast.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,9 @@ public class City {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String country;
 
     public City() {
