@@ -1,16 +1,17 @@
 package com.heidiks.forecast.model;
 
-import com.heidiks.forecast.model.listner.CitySaveOrUpdateListener;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by heidi on 15/05/2017.
  */
 @Data
 @Entity
-@EntityListeners(CitySaveOrUpdateListener.class)
 public class City {
 
     @Id
