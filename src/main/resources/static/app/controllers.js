@@ -1,5 +1,5 @@
 (function(angular) {
-  var AppController = function($scope, City) {
+  var AppController = function($scope, City, toaster) {
 
     get = function() {
         City.query(response => $scope.cities = response ? response : []);
@@ -10,6 +10,11 @@
         console.info(res);
     };
 
+    onSuccess = function(res) {
+        console.info("City saved!");
+        get()
+    };
+
     $scope.saveOrUpdate = function(newCity) {
       var city = new City({
           id: newCity.id,
@@ -17,8 +22,8 @@
           country: newCity.country
       });
 
-      if(!newCity || !newCity.id) city.$save(get, onError);
-      else city.$update(get, onError);
+      if(!newCity || !newCity.id) city.$save(onSuccess, onError);
+      else city.$update(onSuccess, onError);
 
       $scope.newCity = "";
     };

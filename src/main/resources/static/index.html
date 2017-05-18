@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
 </head>
 <body ng-app="myApp">
 <div class="container" ng-controller="AppController">
@@ -9,49 +10,63 @@
         <h1>Cities</h1>
     </div>
 
+    <div class="card">
+        <h3 class="card-header">Featured</h3>
+        <div class="card-text">
+            <form class="form-horizontal" role="form" ng-submit="saveOrUpdate(newCity)">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">City:</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="name" class="form-control" ng-model="newCity.name" placeholder="Maringá" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="country">Country:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="newCity.country" placeholder="Brazil" id="country" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" type="submit" ng-disabled="!newCity.name || !newCity.country" title="Save">Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="alert alert-info" role="alert" ng-hide="cities.length > 0">
         No cities yet.
     </div>
-    <form class="form-horizontal" role="form" ng-submit="saveOrUpdate(newCity)">
-        <div class="input-group">
-            <input type="text" class="form-control" ng-model="newCity.name" placeholder="Name of the city" />
-            <input type="text" class="form-control" ng-model="newCity.country" placeholder="Name of country" />
-            <span class="input-group-btn">
-            <button class="btn btn-success" type="submit" ng-disabled="!newCity.name || !newCity.country" title="Save">
-              <span class="glyphicon glyphicon-save">Save</span>
-            </button>
-          </span>
-        </div>
-        <hr />
 
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Country</th>
-                    <th>Option</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="city in cities">
-                    <td>{{city.name}}</td>
-                    <td>{{city.country}}</td>
-                    <td>
-                        <button class="pull-right btn btn-danger" type="button" title="Delete" ng-click="delete(city)">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                        <button class="pull-right btn btn-warning" type="button" title="Edit" ng-click="edit(city)">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                        <button class="pull-right btn btn-info" type="button" title="Forecast" ng-click="delete(city)">
-                            <span class="glyphicon glyphicon-cloud"></span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th class="text-right">Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="city in cities">
+                <td>{{city.name}}</td>
+                <td>{{city.country}}</td>
+                <td class="text-right">
+                    <button class="btn btn-info" type="button" title="Forecast" ng-click="forecast(city)">
+                        <span class="glyphicon glyphicon-cloud"></span>
+                    </button>
+                    <button class="btn btn-warning" type="button" title="Edit" ng-click="edit(city)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" type="button" title="Delete" ng-click="delete(city)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    </form>
 </div>
 <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
@@ -59,5 +74,7 @@
 <script type="text/javascript" src="./app/app.js"></script>
 <script type="text/javascript" src="./app/controllers.js"></script>
 <script type="text/javascript" src="./app/services.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+<script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
 </body>
 </html>
