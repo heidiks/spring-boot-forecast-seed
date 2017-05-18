@@ -30,4 +30,4 @@ For configure appid from openweather, edit application.properties
 ### TODO
 - Coverage
 - Rest Assured
-- Modal confirm delete
+- Replace alert's to toaster

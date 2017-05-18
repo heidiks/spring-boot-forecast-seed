@@ -1,22 +1,24 @@
 (function(angular) {
-  var AppController = function($scope, City, toaster) {
+  var AppController = function($scope, $http, City) {
 
     get = function() {
         City.query(response => $scope.cities = response ? response : []);
     };
 
     onError = function(res) {
+        alert(res.data.message);
         console.info(res.data.message);
         console.info(res);
     };
 
     onSuccess = function(res) {
         console.info("City saved!");
-        get()
+        get();
+        alert("City saved!");
     };
 
     $scope.saveOrUpdate = function(newCity) {
-      var city = new City({
+      let city = new City({
           id: newCity.id,
           name: newCity.name,
           country: newCity.country
@@ -33,14 +35,20 @@
     };
     
     $scope.delete = function(city) {
-        city.$remove(function() {
-        $scope.cities.splice($scope.cities.indexOf(city), 1);
-      });
+        if(confirm(`Do you really wanto to delete ${city.name}?`))
+            city.$remove(() => $scope.cities.splice($scope.cities.indexOf(city), 1));
+    };
+
+    $scope.forecast = function(city) {
+        $http.get(`/api/cities/${city.id}/forecast`).
+        then(function(response) {
+            console.info(response);
+        });
     };
 
     get();
   };
   
-  AppController.$inject = ['$scope', 'City'];
+  AppController.$inject = ['$scope', '$http', 'City'];
   angular.module("myApp.controllers").controller("AppController", AppController);
 }(angular));

@@ -9,16 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final CityRepository repository;
-
 	@Autowired
-    public DatabaseLoader(CityRepository repository) {
-		this.repository = repository;
-	}
+	private CityRepository repository;
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.repository.save(new City("Maringá", "Brazil"));
-		this.repository.save(new City("Blumenau", "Brazil"));
+		repository.save(new City("Maringá", "Brazil"));
+		repository.save(new City("Blumenau", "Brazil"));
 	}
 }
