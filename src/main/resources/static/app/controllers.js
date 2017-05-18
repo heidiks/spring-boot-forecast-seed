@@ -5,6 +5,11 @@
         City.query(response => $scope.cities = response ? response : []);
     };
 
+    onError = function(res) {
+        console.info(res.data.message);
+        console.info(res);
+    };
+
     $scope.saveOrUpdate = function(newCity) {
       var city = new City({
           id: newCity.id,
@@ -12,8 +17,8 @@
           country: newCity.country
       });
 
-      if(!newCity) city.$save(get);
-      else city.$update(get);
+      if(!newCity || !newCity.id) city.$save(get, onError);
+      else city.$update(get, onError);
 
       $scope.newCity = "";
     };

@@ -20,6 +20,9 @@ $ bower install
 $ mvn spring-boot:run
 ```
 
+### Configuration (Optional)
+For configure appid from openweather, edit application.properties
+
 ### Integration
 - [Travis CI](https://travis-ci.org/heidiks/spring-boot-forecast-seed)
 
