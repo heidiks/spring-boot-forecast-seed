@@ -8,6 +8,7 @@ A starter project integration with http://openweathermap.org/api
 - AngularJS
 - Bootstrap
 - H2 Database
+- Lombok
 
 ### Require
 - JDK 8
