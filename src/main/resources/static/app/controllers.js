@@ -7,12 +7,9 @@
 
     onError = function(res) {
         alert(res.data.message);
-        console.info(res.data.message);
-        console.info(res);
     };
 
     onSuccess = function(res) {
-        console.info("City saved!");
         get();
         alert("City saved!");
     };
