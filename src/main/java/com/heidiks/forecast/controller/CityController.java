@@ -40,16 +40,16 @@ public class CityController {
         return service.save(updatedCity);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
+
     @RequestMapping(value = "/{id}/forecast", method = RequestMethod.GET)
     public @ResponseBody List<Object> getForecast(@PathVariable Long id) {
         City city = service.findOne(id);
 
         return openWeatherRestClient.getForecast(city);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
     }
 
 }

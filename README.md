@@ -31,3 +31,4 @@ For configure appid from openweather, edit application.properties
 - Coverage
 - Rest Assured
 - Replace alert's to toaster
+- Create handler's for exceptions throws
