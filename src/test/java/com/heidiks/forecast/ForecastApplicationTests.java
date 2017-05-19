@@ -11,6 +11,7 @@ public class ForecastApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		ForecastApplication.main(new String[]{});
 	}
 
 }
