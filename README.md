@@ -20,18 +20,19 @@ Based in RESTful architecture
 ### Run
 ```sh
 $ bower install
+$
+$ mvn clean install
 $ mvn spring-boot:run
 ```
 
 ### Configuration (Optional)
-For configure appid from openweather, edit application.properties
+For configure appid from openweather, edit *openweather.api.key* on **application.properties**.
 
 ### Integration
 - [Travis CI](https://travis-ci.org/heidiks/spring-boot-forecast-seed)
 - [Codecov](https://codecov.io/gh/heidiks/spring-boot-forecast-seed)
 
 ### TODO
-- Coveralls
 - Rest Assured
 - Replace alert's to toaster
 - Create handler's for exceptions throws
