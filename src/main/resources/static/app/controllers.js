@@ -37,9 +37,11 @@
     };
 
     $scope.forecast = function(city) {
+        $scope.selectedForecast = city;
         $http.get(`/api/cities/${city.id}/forecast`).
         then(function(response) {
-            console.info(response);
+            $scope.forecasts = response.data[0].list.filter(f=>f.dt_txt.includes("12:00:00"));
+            console.info($scope.forecasts);
         });
     };
 

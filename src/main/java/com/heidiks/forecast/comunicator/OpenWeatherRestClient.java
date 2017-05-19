@@ -23,7 +23,7 @@ public class OpenWeatherRestClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String GET_FORECAST_URI = "http://api.openweathermap.org/data/2.5/forecast?q={cityName}&mode=json&appid={apiKey}";
+    private static final String GET_FORECAST_URI = "http://api.openweathermap.org/data/2.5/forecast?q={cityName}&mode=json&units=metric&appid={apiKey}";
 
     public List<Object> getForecast(City city) throws HttpClientErrorException {
         try {
