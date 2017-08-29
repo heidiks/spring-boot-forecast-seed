@@ -1,6 +1,6 @@
 package com.heidiks.forecast.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,26 +12,21 @@ import javax.persistence.Id;
  */
 @Data
 @Entity
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class City {
 
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(nullable = false)
+    @NonNull
+    @Getter
     private String name;
+
     @Column(nullable = false)
+    @NonNull
     private String country;
-
-    public City() {
-    }
-
-    public City(String name, String country) {
-        this.name = name;
-        this.country = country;
-    }
-
-    public String getName() {
-        return name;
-    }
 
 }
