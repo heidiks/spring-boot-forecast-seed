@@ -3,7 +3,7 @@
 
 # spring-boot-forecast-seed
 A starter project integration with http://openweathermap.org/api.
-Based in RESTful architecture
+Based on a RESTful architecture
 
 ### Stack:
 - Spring Boot
